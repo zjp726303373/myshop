@@ -1,11 +1,9 @@
 module.exports = {
     index: function (req, res) {
         if(req.session.sign){
-            console.log(req.session)
             res.render('users/index',{userName:req.session.user.userName});
             return;
         }
-        console.log(222)
         var email =req.cookies.email;
         var password=req.cookies.password;
 
@@ -74,15 +72,15 @@ module.exports = {
     products: function (req, res) {
         res.render('users/products', {});
     },
-    // products: function (req, res) {
-    //     var ProductService = require('../Service/ProductService');
-    //     var productService = new ProductService();
-    //     productService.init();
-    //     productService.selectAll(function(result){
-    //         productService.end();
-    //         res.render('products', { products: result });
-    //     })
-    // },
+     products: function (req, res) {
+         var ProductService = require('../Service/ProductService');
+         var productService = new ProductService();
+         productService.init();
+         productService.selectAll(function(result){
+             productService.end();
+             res.render('users/products', { products: result });
+         })
+     },
     single: function (req, res) {
         res.render('users/single', {});
     },
@@ -117,7 +115,6 @@ module.exports = {
             }
             result.name=null;
             result.password=null;
-            console.log(req.session);
             res.end(JSON.stringify(result.state));
         },0);
     },
