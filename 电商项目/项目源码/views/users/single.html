@@ -260,47 +260,51 @@
 					</div>
 			<div class="clearfix"> </div>
 			<div class="content-top1">
+				<!-- Product -->
+				<%products.forEach(function(product){
+				%>
 				<div class="col-md-4 col-md4">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="single">
-							<img class="img-responsive" src="images/pi6.png" alt="" />
+							<img class="img-responsive" src="<%=product.img%>" alt="" />
 						</a>
-						<h3><a href="single">Trouser</a></h3>
+						<h3><a href="single"><%=product.title%></a></h3>
 						<div class="price">
-								<h5 class="item_price">$300</h5>
+								<h5 class="item_price"><%=product.price%></h5>
 								<a href="#" class="item_add">Add To Cart</a>
 								<div class="clearfix"> </div>
 						</div>
 					</div>
-				</div>	
-			<div class="col-md-4 col-md4">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single">
-							<img class="img-responsive" src="images/pi7.png" alt="" />
-						</a>
-						<h3><a href="single">Jeans</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
-			<div class="col-md-4 col-md4">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single">
-							<img class="img-responsive" src="images/pi.png" alt="" />
-						</a>
-						<h3><a href="single">Palazoo</a></h3>
-						<div class="price">
-								<h5 class="item_price">$300</h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-						
-					</div>
-				</div>	
+				</div>
+				<%})%>
+			<!--<div class="col-md-4 col-md4">-->
+					<!--<div class="col-md1 simpleCart_shelfItem">-->
+						<!--<a href="single">-->
+							<!--<img class="img-responsive" src="images/pi7.png" alt="" />-->
+						<!--</a>-->
+						<!--<h3><a href="single">Jeans</a></h3>-->
+						<!--<div class="price">-->
+								<!--<h5 class="item_price">$300</h5>-->
+								<!--<a href="#" class="item_add">Add To Cart</a>-->
+								<!--<div class="clearfix"> </div>-->
+						<!--</div>-->
+						<!-- -->
+					<!--</div>-->
+				<!--</div>	-->
+			<!--<div class="col-md-4 col-md4">-->
+					<!--<div class="col-md1 simpleCart_shelfItem">-->
+						<!--<a href="single">-->
+							<!--<img class="img-responsive" src="images/pi.png" alt="" />-->
+						<!--</a>-->
+						<!--<h3><a href="single">Palazoo</a></h3>-->
+						<!--<div class="price">-->
+								<!--<h5 class="item_price">$300</h5>-->
+								<!--<a href="#" class="item_add">Add To Cart</a>-->
+								<!--<div class="clearfix"> </div>-->
+						<!--</div>-->
+						<!-- -->
+					<!--</div>-->
+				<!--</div>	-->
 			
 			<div class="clearfix"> </div>
 			</div>		
