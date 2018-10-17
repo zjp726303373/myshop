@@ -201,14 +201,14 @@
 	<div class="container">
 		<h2>Products</h2>
 		<div class="col-md-9">
-
-			<%products.forEach(function(product){
-			%>
 			<div class="content-top1">
+			<%var i=0;products.forEach(function(product){
+				i++;
+			%>
 				<div class="col-md-4 col-md4">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="single">
-							<img class="img-responsive" src="<%=product.img%>" alt="" />
+							<img class="img-responsive" src="<%=product.Image%>" alt="" />
 						</a>
 						<h3><a href="single"><%=product.title%></a></h3>
 						<div class="price">
@@ -218,7 +218,11 @@
 						</div>
 					</div>
 				</div>
-				<%})%>
+			<%if(i%3==0){%>
+				<div class="clearfix">　</div>
+				<%}})%>
+			</div>
+		</div>
 			<!--<div class="col-md-4 col-md4">-->
 					<!--<div class="col-md1 simpleCart_shelfItem">-->
 						<!--<a href="single">-->
@@ -247,27 +251,10 @@
 
 					<!--</div>-->
 				<!--</div>-->
-			
-			<div class="clearfix"> </div>
-			</div>
 
-			<%products.forEach(function(product){
-			%>
-			<div class="content-top1">
-				<div class="col-md-4 col-md4">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single">
-							<img class="img-responsive" src="<%=product.img%>" alt="" />
-						</a>
-						<h3><a href="single"><%=product.title%></a></h3>
-						<div class="price">
-								<h5 class="item_price"><%=product.price%></h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-					</div>
-				</div>
-				<%})%>
+			<!--<div class="clearfix"> </div>-->
+			<!--</div>-->
+
 			<!--<div class="col-md-4 col-md4">-->
 					<!--<div class="col-md1 simpleCart_shelfItem">-->
 						<!--<a href="single">-->
@@ -297,26 +284,8 @@
 					<!--</div>-->
 				<!--</div>-->
 			
-			<div class="clearfix"> </div>
-			</div>
-
-			<%products.forEach(function(product){
-			%>
-			<div class="content-top1">
-				<div class="col-md-4 col-md4">
-					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single">
-							<img class="img-responsive" src="<%=product.img%>" alt="" />
-						</a>
-						<h3><a href="single"><%=product.title%></a></h3>
-						<div class="price">
-								<h5 class="item_price"><%=product.price%></h5>
-								<a href="#" class="item_add">Add To Cart</a>
-								<div class="clearfix"> </div>
-						</div>
-					</div>
-				</div>
-				<%})%>
+			<!--<div class="clearfix"> </div>-->
+			<!--</div>-->
 			<!--<div class="col-md-4 col-md4">-->
 					<!--<div class="col-md1 simpleCart_shelfItem">-->
 						<!--<a href="single">-->
@@ -345,10 +314,6 @@
 
 					<!--</div>-->
 				<!--</div>-->
-			
-			<div class="clearfix"> </div>
-			</div>	
-		</div>
 		<div class="col-md-3 product-bottom">
 			<!--categories-->
 				<div class=" rsidebar span_1_of_left">

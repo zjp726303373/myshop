@@ -12,7 +12,7 @@ module.exports = function () {
             user: 'root',            //MySQL认证用户名
             password: '520431',                //MySQL认证用户密码
             port: '3306',                 //端口号
-            database: 'mytest'          //数据库里面的数据
+            database: 'myshop'          //数据库里面的数据
         });
         //3，连接
         this.connection.connect();

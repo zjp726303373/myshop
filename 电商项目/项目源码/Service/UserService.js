@@ -59,7 +59,10 @@ module.exports = function () {
                 that.usersDao.insertUser(info, function (result) {
                     response.state = 1;
                     response.msg = '注册成功,登陆后进行浏览！！！';
-                    that.setSession(session, result.insertId);
+                    session.user={
+                        userId :  result.insertId,
+                        userName : info.firstName+info.lastName
+                    }
                     call(response);
                 });
             }
