@@ -8,26 +8,32 @@ module.exports = function () {
         this.usersDao.init();
     };
 
-    this.login = function (session, email, password, call) {
+    this.login = function (session, email, password, call,state) {
         var response = {
             state: 0,
             msg: ''
         }
-        var that = this;
-        var email = this.crypto(email);
-        var password = this.crypto(password);
+
+        if(state==0){
+            //(1)用户工具类
+            var email = this.crypto(email);
+            var password = this.crypto(password);
+        }
         //检查用户是否存在于数据库中且密码是否正确
         this.checkUser(password, ['email', email], function (result) {
             if (!result.flag) {
                 response.state = -1;
-                response.msg = "邮箱地址错误，请重新输入或者立即注册！";
             }
-            else if (result.userId) {
-                response.state = 1;
-                response.msg = "登录成功！";
-                that.setSession(session, result.userId);
+            else if (result.result) {
+                response.state = 2;
+                response.email = result.email;
+                response.password = result.password;
+                session.user={
+                    userId : result.result[0].user_id,
+                    userName : result.result[0].firstName+result.result[0].lastName
+                }
             } else {
-                response.state = 0;
+                response.state = 1;
                 response.msg = "输入密码错误！";
             }
             call(response);
@@ -52,7 +58,7 @@ module.exports = function () {
                 //账户不存在时往数据库中添加数据
                 that.usersDao.insertUser(info, function (result) {
                     response.state = 1;
-                    response.msg = '注册成功';
+                    response.msg = '注册成功,登陆后进行浏览！！！';
                     that.setSession(session, result.insertId);
                     call(response);
                 });
@@ -84,7 +90,7 @@ module.exports = function () {
             if (result.length == 0) {
             } else if (result[0].password == password) {
                 msg.flag = true;
-                msg.userId = result[0].user_id;
+                msg.result = result;
             } else {
                 msg.flag = true;
             }
@@ -92,10 +98,11 @@ module.exports = function () {
         });
     };
 
-    this.setSession = function (session, user_id) {
-        session.sign = true;
-        session.userId = user_id;
-    };
+    //this.setSession = function (session, user_id, user_name) {
+    //    session.sign = true;
+    //    session.userId = user_id;
+    //    session.userName = user_name;
+    //};
 
     this.crypto = function (data) {
         var Tools = require('../Tools/Tool');

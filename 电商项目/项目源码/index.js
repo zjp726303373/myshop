@@ -54,8 +54,8 @@ app.post('/registers',urlencodedParser,indexController.registers);
 // app.post('/removeCarList',urlencodedParser,indexController.removeCarList);
 
 
-var indexController = require('./Controllers/AdminController');
-app.get('/admin-log', indexController.admin_log);
+var adminController = require('./Controllers/AdminController');
+app.get('/admin-log', adminController.admin_log);
 
 app.listen(9999,function(){
     console.log('Server is running...');
