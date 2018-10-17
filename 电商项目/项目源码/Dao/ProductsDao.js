@@ -35,6 +35,25 @@ module.exports = function () {
             call(result);
         });
     };
+
+    this.selectProduct = function (info,call) {
+        //1,编写sql语句
+        var userGetSql = "SELECT * FROM products WHERE " + info[0] + " = '" + info[1] + "'";
+        //2,进行查询操作
+        /**
+         *query，mysql语句执行的方法
+         * 1，userAddSql编写的sql语句
+         * 2，function (err, result)，回调函数，err当执行错误时，回传一个err值，当执行成功时，传回result
+         */
+        this.connection.query(userGetSql, function (err, result) {
+            if (err) {
+                console.log('[INSERT ERROR] - ', err.message);
+                return;
+            }
+            call(result);
+        });
+    };
+
     this.closeConnecte = function(){
         //3,连接结束
         this.connection.end();

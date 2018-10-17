@@ -45,6 +45,8 @@ app.get('/single', indexController.single);
 
 app.get('/women', indexController.women);
 
+app.get('/goods', indexController.goods);
+
 app.post('/login',urlencodedParser,indexController.login);
 
 app.post('/registers',urlencodedParser,indexController.registers);
