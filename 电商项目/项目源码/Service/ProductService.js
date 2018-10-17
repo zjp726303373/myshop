@@ -14,6 +14,12 @@ module.exports = function (){
         });
     };
 
+    this.selectByKey = function(info,call){
+        this.productsDao.selectProducts(function (result) {
+            call(result);
+        });
+    };
+
     this.end = function(){
         this.productsDao.closeConnecte();
     };

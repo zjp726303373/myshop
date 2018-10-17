@@ -204,15 +204,15 @@
 	<div class="col-md-5 grid">		
 		<div class="flexslider">
 			  <ul class="slides">
-			    <li data-thumb="images/si.jpg">
-			        <div class="thumb-image"> <img src="images/si.jpg" data-imagezoom="true" class="img-responsive"> </div>
+				  <li data-thumb="<%= goods[0].Image%>">
+					  <div class="thumb-image"> <img src="<%= goods[0].Image%>" data-imagezoom="true" class="img-responsive"> </div>
+				  </li>
+			    <li data-thumb="<%= goods[0].img_1%>">
+			         <div class="thumb-image"> <img src="<%= goods[0].img_1%>" data-imagezoom="true" class="img-responsive"> </div>
 			    </li>
-			    <li data-thumb="images/si1.jpg">
-			         <div class="thumb-image"> <img src="images/si1.jpg" data-imagezoom="true" class="img-responsive"> </div>
+			    <li data-thumb="<%= goods[0].img_2%>">
+			       <div class="thumb-image"> <img src="<%= goods[0].img_2%>" data-imagezoom="true" class="img-responsive"> </div>
 			    </li>
-			    <li data-thumb="images/si2.jpg">
-			       <div class="thumb-image"> <img src="images/si2.jpg" data-imagezoom="true" class="img-responsive"> </div>
-			    </li> 
 			  </ul>
 		</div>
 	</div>	
@@ -261,22 +261,22 @@
 			<div class="clearfix"> </div>
 			<div class="content-top1">
 				<!-- Product -->
-				<%products.forEach(function(product){
+				<%for(var i=0;i<3;i++){
 				%>
 				<div class="col-md-4 col-md4">
 					<div class="col-md1 simpleCart_shelfItem">
 						<a href="single">
-							<img class="img-responsive" src="<%=product.img%>" alt="" />
+							<img class="img-responsive" src="<%=products[i].Image%>" alt="" />
 						</a>
-						<h3><a href="single"><%=product.title%></a></h3>
+						<h3><a href="single"><%=products[i].title%></a></h3>
 						<div class="price">
-								<h5 class="item_price"><%=product.price%></h5>
+								<h5 class="item_price"><%=products[i].price%></h5>
 								<a href="#" class="item_add">Add To Cart</a>
 								<div class="clearfix"> </div>
 						</div>
 					</div>
 				</div>
-				<%})%>
+				<%}%>
 			<!--<div class="col-md-4 col-md4">-->
 					<!--<div class="col-md1 simpleCart_shelfItem">-->
 						<!--<a href="single">-->

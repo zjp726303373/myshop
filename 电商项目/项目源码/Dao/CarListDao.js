@@ -25,7 +25,7 @@ module.exports = function () {
         });
     };
     this.selectCarLists = function (userId,call) {
-        var userGetSql = "SELECT * FROM carlist inner join products on carlist.product_id=products.product_id WHERE carlist.user_id='"+userId+"'";
+        var userGetSql = "SELECT * FROM carlist inner join products on carlist.product_id=products.id WHERE carlist.user_id='"+userId+"'";
         this.connection.query(userGetSql, function (err, result) {
             if (err) {
                 console.log('[INSERT ERROR] - ', err.message);

@@ -207,13 +207,13 @@
 			%>
 				<div class="col-md-4 col-md4">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="single">
+						<a href="goods?goods_id=<%=product.id%>">
 							<img class="img-responsive" src="<%=product.Image%>" alt="" />
 						</a>
-						<h3><a href="single"><%=product.title%></a></h3>
+						<h3><a href="goods?goods_id=<%=product.id%>"><%=product.title%></a></h3>
 						<div class="price">
 								<h5 class="item_price"><%=product.price%></h5>
-								<a href="#" class="item_add">Add To Cart</a>
+								<a href="javaScript:void(0)" class="item_add">Add To Cart</a>
 								<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -223,6 +223,21 @@
 				<%}})%>
 			</div>
 		</div>
+		<!--<script>-->
+			<!--function moreInfo(num){-->
+				<!--$.ajax({-->
+					<!--url: 'goods',-->
+					<!--type: 'get',-->
+					<!--data: {-->
+						<!--goodsId: num-->
+					<!--},-->
+					<!--traditional: true,//这里设置为true-->
+					<!--success: function (data) {-->
+
+					<!--}-->
+				<!--});-->
+			<!--}-->
+		<!--</script>-->
 			<!--<div class="col-md-4 col-md4">-->
 					<!--<div class="col-md1 simpleCart_shelfItem">-->
 						<!--<a href="single">-->

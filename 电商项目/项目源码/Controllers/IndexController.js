@@ -8,7 +8,7 @@ module.exports = {
         var password=req.cookies.password;
 
         if(email==null||password==null){
-            res.render('index',{state:-1});
+            res.render('users/index',{state:-1});
         }else{
             //(1)引入userService
             var UserService = require('../Service/UserService');
@@ -32,16 +32,16 @@ module.exports = {
     account: function (req, res) {
         res.render('users/account', {});
     },
-    // checkout: function (req, res) {
-    //     //1,引入购物车处理模块
-    //     var CarlistService = require('../Service/CarlistService');
-    //     var carlistService = new CarlistService();
-    //     carlistService.init();
-    //     carlistService.selectAll(req.session,function(data){
-    //         carlistService.end();
-    //         res.render(data.url,{products:data.result});
-    //     })
-    // },
+     checkout: function (req, res) {
+         //1,引入购物车处理模块
+         var CarlistService = require('../Service/CarlistService');
+         var carlistService = new CarlistService();
+         carlistService.init();
+         carlistService.selectAll(req.session,function(data){
+             carlistService.end();
+             res.render(data.url,{products:data.result});
+         })
+     },
     // addCarList : function(req,res){
     //     //1, 解析数据
     //     var productId = req.body.productId;
@@ -70,9 +70,6 @@ module.exports = {
         res.render('users/contact', {});
     },
     products: function (req, res) {
-        res.render('users/products', {});
-    },
-     products: function (req, res) {
          var ProductService = require('../Service/ProductService');
          var productService = new ProductService();
          productService.init();
@@ -80,15 +77,30 @@ module.exports = {
              productService.end();
              res.render('users/products', { products: result });
          })
-     },
+    },
+    goods:function(req,res){
+        var product_id = req.query.goodsId;
+        var ProductService = require('../Service/ProductService');
+        var productService = new ProductService();
+        productService.init();
+        productService.selectByKey(['id',product_id],function(result){
+            var obj = {
+                goods: result
+            };
+            productService.selectAll(function(result){
+                productService.end();
+                obj.products = result;
+                res.render('users/single', obj);
+            })
+            //productService.end();
+            //res.render('users/single', { goods: result });
+        })
+    },
     single: function (req, res) {
         res.render('users/single', {});
     },
     men: function (req, res) {
         res.render('users/men', {});
-    },
-    checkout: function (req, res) {
-        res.render('users/checkout', {});
     },
     register: function (req, res) {
         res.render('users/register', {});

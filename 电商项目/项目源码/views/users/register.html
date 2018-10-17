@@ -2,12 +2,12 @@
 <html>
 <head>
 <title>Register</title>
-<link href="css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -230,11 +230,10 @@
 					 <div class="clearfix"> </div>
 				<!-- </form> -->
 				
-				<div class="register-but">
-				  <!-- <form action="#" method="post"> -->
-					   <input type="submit" value="submit" onclick="register()">
-					   <div class="clearfix"> </div>
-				   <!-- </form> -->
+				<div class="register-but login-right">
+					<div class="word-in">
+						<input type="submit" value="submit" onclick="register()">
+					</div>
 				</div>
 		   </div>
 		   <script>
@@ -250,7 +249,10 @@
 					email : registerEmail.value,
 					password : registerPwd.value
 				}
-				if(registerPwd.value==registerPwds.value){
+				if(!registerEmail.value){
+					alert('请填入用户名！！！');
+				}
+				else if(registerPwd.value==registerPwds.value){
 					$.ajax({
 						url:'registers',
 						type:'post',

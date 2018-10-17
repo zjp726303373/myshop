@@ -14,18 +14,18 @@ module.exports = function () {
             result: []
         };
         if (session.sign) {
-            this.carListDao.selectCarLists(session.userId, function (result) {
+            this.carListDao.selectCarLists(session.user.userId, function (result) {
                 var length = result.length;
                 if (length == 0) {
-                    msg.url = 'checkout';
+                    msg.url = 'users/checkout';
                 } else {
-                    msg.url = 'checkout';
+                    msg.url = 'users/checkout';
                     msg.result = result;
                 }
                 call(msg);
             });
         } else {
-            msg.url = 'account';
+            msg.url = 'users/account';
             call(msg);
         }
     };
