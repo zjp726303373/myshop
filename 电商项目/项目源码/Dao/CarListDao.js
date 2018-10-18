@@ -7,7 +7,7 @@ module.exports = function () {
         this.connection = mysql.createConnection({
             host: '192.168.2.190',       //主机 ip
             user: 'root',            //MySQL认证用户名
-            password: '520431',                //MySQL认证用户密码
+            password: '123456',                //MySQL认证用户密码
             port: '3306',                 //端口号
             database: 'myshop'          //数据库里面的数据
         });

@@ -295,7 +295,6 @@ module.exports = {
                 }
             },1);
         }
-        res.render('users/register', {});
     },
     women: function (req, res) {
         var ProductService = require('../Service/ProductService');
