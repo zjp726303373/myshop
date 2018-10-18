@@ -8,7 +8,7 @@ module.exports = {
         var password=req.cookies.password;
 
         if(email==null||password==null){
-            res.render('users/index',{state:-1});
+            res.render('users/index',{userName:'', state:-1});
         }else{
             //(1)引入userService
             var UserService = require('../Service/UserService');
@@ -18,6 +18,7 @@ module.exports = {
             userService.init();
             //(4)验证用户都合法
             userService.login(req.session,email,password,function(result){
+                userService.end();
                 if(result.state==2)
                 {
                     req.session.sign=true;
