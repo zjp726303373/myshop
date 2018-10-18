@@ -58,4 +58,4 @@ module.exports = function () {
         //3,连接结束
         this.connection.end();
     }
-}
+};
