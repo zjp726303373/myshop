@@ -15,8 +15,8 @@ module.exports = function () {
         this.connection.connect();
     };
     this.selectCarList = function (info,call) {
-        var userGetSql = "SELECT * FROM carlist WHERE "+info[0]+"='"+info[1]+"'";
-        this.connection.query(userGetSql, function (err, result) {
+        var userSql = "SELECT * FROM carlist WHERE "+info[0]+"='"+info[1]+"'";
+        this.connection.query(userSql, function (err, result) {
             if (err) {
                 console.log('[INSERT ERROR] - ', err.message);
                 return;
@@ -25,8 +25,8 @@ module.exports = function () {
         });
     };
     this.selectCarLists = function (userId,call) {
-        var userGetSql = "SELECT * FROM carlist inner join products on carlist.product_id=products.id WHERE carlist.user_id='"+userId+"'";
-        this.connection.query(userGetSql, function (err, result) {
+        var userSql = "SELECT * FROM carlist inner join products on carlist.product_id=products.id WHERE carlist.user_id='"+userId+"'";
+        this.connection.query(userSql, function (err, result) {
             if (err) {
                 console.log('[INSERT ERROR] - ', err.message);
                 return;
@@ -35,8 +35,19 @@ module.exports = function () {
         });
     };
     this.addCarList = function(info,call){
-        var userAddSql = "INSERT INTO carlist(user_id,product_id) values(?,?)";
-        this.connection.query(userAddSql, info, function (err, result) {
+        var userSql = "INSERT INTO carlist(user_id,product_id,count,size) values(?,?,?,?)";
+        this.connection.query(userSql, info, function (err, result) {
+            if (err) {
+                console.log('[INSERT ERROR] - ', err.message);
+                return;
+            }
+            call(result);
+        });
+    };
+    this.updatelist = function(info,call){
+        //update table1 set field1=value1 where 范围
+        var userSql = "UPDATE carlist SET count=?,size=? WHERE user_id=? and product_id=?";
+        this.connection.query(userSql, info, function (err, result) {
             if (err) {
                 console.log('[INSERT ERROR] - ', err.message);
                 return;
@@ -45,9 +56,8 @@ module.exports = function () {
         });
     };
     this.deleteCarList = function(info,call){
-        //delete from people where id=20;
-        var userAddSql = "DELETE FROM carlist WHERE user_id=? and product_id=?";
-        this.connection.query(userAddSql, info, function (err, result) {
+        var userSql = "DELETE FROM carlist WHERE user_id=? and product_id=?";
+        this.connection.query(userSql, info, function (err, result) {
             if (err) {
                 console.log('[INSERT ERROR] - ', err.message);
                 return;

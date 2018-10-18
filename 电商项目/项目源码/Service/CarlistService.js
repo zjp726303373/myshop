@@ -9,41 +9,27 @@ module.exports = function () {
     };
 
     this.selectAll = function (session, call) {
-        var msg = {
-            url: '',
-            result: []
-        };
-        if (session.sign) {
-            this.carListDao.selectCarLists(session.user.userId, function (result) {
-                var length = result.length;
-                if (length == 0) {
-                    msg.url = 'users/checkout';
-                } else {
-                    msg.url = 'users/checkout';
-                    msg.result = result;
-                }
-                call(msg);
-            });
-        } else {
-            msg.url = 'users/account';
-            call(msg);
-        }
+        this.carListDao.selectCarLists(session.user.userId, function (data) {
+            call(data);
+        });
     };
 
-    this.addCarlist = function (session, productId, call) {
-        var msg = null;
+    this.addCarlist = function (session, info, call) {
         var that = this;
         if (session.sign) {
-            this.checkList(session.userId, productId, function (result) {
+            this.checkList(session.user.userId, info.productId, function (result) {
                 if (result) {
                     that.carListDao.init();
-                    that.carListDao.addCarList([session.userId, productId], function (result) {
+                    that.carListDao.addCarList([session.user.userId,info.productId,info.count,info.size], function (result) {
                         msg = '商品添加成功，请在购物车中查看！！！';
                         call(msg);
                     })
                 } else {
-                    msg = '该商品已经在购物车中！！！';
-                    call(msg);
+                    that.carListDao.init();
+                    that.carListDao.updatelist([info.count,info.size,session.user.userId,info.productId], function (result) {
+                        msg = '该商品存在购物车中！已帮你修改成最新购物信息！';
+                        call(msg);
+                    })
                 }
             })
         } else {
@@ -53,7 +39,7 @@ module.exports = function () {
     };
 
     this.removeList = function(session, productId, call){
-        this.carListDao.deleteCarList([session.userId,productId],function(){
+        this.carListDao.deleteCarList([session.user.userId,productId],function(){
             call('商品已经从购物车中移除！！！');
         })
     };

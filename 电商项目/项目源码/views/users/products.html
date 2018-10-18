@@ -39,18 +39,16 @@
 					<div class="col-sm-3 logo animated wow fadeInLeft" data-wow-delay=".5s">
 						<h1><a href="index">Youth <span>Fashion</span></a></h1>
 					</div>
-					<div class="col-sm-4 world animated wow fadeInRight" data-wow-delay=".5s">
+					<div class="col-sm-3 world animated wow fadeInRight" data-wow-delay=".5s">
 						<span><i class="glyphicon glyphicon-phone"></i>085 596 234</span>
 						<p>Call me</p>
 					</div>
-					<div class="container col-sm-3">
-						<div class="col-sm-6 world animated wow fadeInRight" data-wow-delay=".5s">
-							<!-- <span><i class="glyphicon glyphicon-phone"></i>085 596 234</span>
-							<p>Call me</p> -->
+					<div class="container col-sm-4">
+						<div class="col-sm-8 world animated wow fadeInRight" data-wow-delay=".5s">
 							<img class="play-icon popup-with-zoom-anim" src="images/headImg.jpg" style="width:35px;height:35px;" alt="">
-							<span>Hello!</span>
+							<span>Hello!! <%= userName%></span>
 						</div>
-						<div class="col-sm-6 world animated wow fadeInRight" data-wow-delay=".5s">
+						<div class="col-sm-4 world animated wow fadeInRight" data-wow-delay=".5s">
 							<div class="cart box_1">
 								<a href="checkout">
 									<h3>
@@ -59,7 +57,7 @@
 										<img src="images/cart.png" alt="" />
 									</h3>
 								</a>
-								<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+								<p><a href="checkout" class="simpleCart_empty">Empty Cart</a></p>
 	
 							</div>
 						</div>
@@ -207,13 +205,13 @@
 			%>
 				<div class="col-md-4 col-md4">
 					<div class="col-md1 simpleCart_shelfItem">
-						<a href="goods?goods_id=<%=product.id%>">
+						<a href="single?goods_id=<%=product.id%>">
 							<img class="img-responsive" src="<%=product.Image%>" alt="" />
 						</a>
-						<h3><a href="goods?goods_id=<%=product.id%>"><%=product.title%></a></h3>
+						<h3><a href="single?goods_id=<%=product.id%>"><%=product.title%></a></h3>
 						<div class="price">
 								<h5 class="item_price"><%=product.price%></h5>
-								<a href="javaScript:void(0)" class="item_add">Add To Cart</a>
+								<a href="<%=product.sex%>" class="item_add"><%=product.sex%></a>
 								<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -223,98 +221,6 @@
 				<%}})%>
 			</div>
 		</div>
-		<!--<script>-->
-			<!--function moreInfo(num){-->
-				<!--$.ajax({-->
-					<!--url: 'goods',-->
-					<!--type: 'get',-->
-					<!--data: {-->
-						<!--goodsId: num-->
-					<!--},-->
-					<!--traditional: true,//这里设置为true-->
-					<!--success: function (data) {-->
-
-					<!--}-->
-				<!--});-->
-			<!--}-->
-		<!--</script>-->
-			<!--<div class="col-md-4 col-md4">-->
-					<!--<div class="col-md1 simpleCart_shelfItem">-->
-						<!--<a href="single">-->
-							<!--<img class="img-responsive" src="images/pi2.png" alt="" />-->
-						<!--</a>-->
-						<!--<h3><a href="single">Trouser</a></h3>-->
-						<!--<div class="price">-->
-								<!--<h5 class="item_price">$300</h5>-->
-								<!--<a href="#" class="item_add">Add To Cart</a>-->
-								<!--<div class="clearfix"> </div>-->
-						<!--</div>-->
-
-					<!--</div>-->
-				<!--</div>-->
-			<!--<div class="col-md-4 col-md4">-->
-					<!--<div class="col-md1 simpleCart_shelfItem">-->
-						<!--<a href="single">-->
-							<!--<img class="img-responsive" src="images/pi4.png" alt="" />-->
-						<!--</a>-->
-						<!--<h3><a href="single">Pant</a></h3>-->
-						<!--<div class="price">-->
-								<!--<h5 class="item_price">$300</h5>-->
-								<!--<a href="#" class="item_add">Add To Cart</a>-->
-								<!--<div class="clearfix"> </div>-->
-						<!--</div>-->
-
-					<!--</div>-->
-				<!--</div>-->
-
-			<!--<div class="clearfix"> </div>-->
-			<!--</div>-->
-
-			<!--<div class="col-md-4 col-md4">-->
-					<!--<div class="col-md1 simpleCart_shelfItem">-->
-						<!--<a href="single">-->
-							<!--<img class="img-responsive" src="images/pi3.png" alt="" />-->
-						<!--</a>-->
-						<!--<h3><a href="single">Palazoo</a></h3>-->
-						<!--<div class="price">-->
-								<!--<h5 class="item_price">$300</h5>-->
-								<!--<a href="#" class="item_add">Add To Cart</a>-->
-								<!--<div class="clearfix"> </div>-->
-						<!--</div>-->
-
-					<!--</div>-->
-				<!--</div>-->
-			<!--<div class="col-md-4 col-md4">-->
-					<!--<div class="col-md1 simpleCart_shelfItem">-->
-						<!--<a href="single">-->
-							<!--<img class="img-responsive" src="images/pi12.png" alt="" />-->
-						<!--</a>-->
-						<!--<h3><a href="single">Palazoo</a></h3>-->
-						<!--<div class="price">-->
-								<!--<h5 class="item_price">$300</h5>-->
-								<!--<a href="#" class="item_add">Add To Cart</a>-->
-								<!--<div class="clearfix"> </div>-->
-						<!--</div>-->
-
-					<!--</div>-->
-				<!--</div>-->
-			
-			<!--<div class="clearfix"> </div>-->
-			<!--</div>-->
-			<!--<div class="col-md-4 col-md4">-->
-					<!--<div class="col-md1 simpleCart_shelfItem">-->
-						<!--<a href="single">-->
-							<!--<img class="img-responsive" src="images/pi11.png" alt="" />-->
-						<!--</a>-->
-						<!--<h3><a href="single">Jeans</a></h3>-->
-						<!--<div class="price">-->
-								<!--<h5 class="item_price">$300</h5>-->
-								<!--<a href="#" class="item_add">Add To Cart</a>-->
-								<!--<div class="clearfix"> </div>-->
-						<!--</div>-->
-
-					<!--</div>-->
-				<!--</div>-->
 			<!--<div class="col-md-4 col-md4">-->
 					<!--<div class="col-md1 simpleCart_shelfItem">-->
 						<!--<a href="single">-->

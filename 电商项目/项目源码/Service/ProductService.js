@@ -15,7 +15,7 @@ module.exports = function (){
     };
 
     this.selectByKey = function(info,call){
-        this.productsDao.selectProducts(function (result) {
+        this.productsDao.selectProduct(info,function (result) {
             call(result);
         });
     };
