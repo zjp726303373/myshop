@@ -91,7 +91,7 @@ module.exports = {
                 productService.end();
                 obj.products = result;
                 res.render('users/single', obj);
-            })
+            });
             //productService.end();
             //res.render('users/single', { goods: result });
         })
@@ -117,7 +117,7 @@ module.exports = {
         var UserService = require('../Service/UserService');
         //(2),创建UserService对象并初始化
         var userService = new UserService();
-        userService.init()
+        userService.init();
         //(3),用户登陆业务
         userService.login(req.session,email,password,function(result){
             if(result.state==2){
@@ -151,4 +151,4 @@ module.exports = {
             res.end(JSON.stringify(data))
         });
     }
-}
+};
