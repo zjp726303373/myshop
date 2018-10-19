@@ -31,17 +31,11 @@ app.get('/index', indexController.index);
 
 app.get('/account', indexController.account);
 
-app.get('/checkout', indexController.checkout);
-
 app.get('/contact', indexController.contact);
-
-app.get('/products', indexController.products);
 
 app.get('/men', indexController.men);
 
 app.get('/register', indexController.register);
-
-app.get('/single', indexController.single);
 
 app.get('/women', indexController.women);
 
@@ -49,10 +43,19 @@ app.post('/login',urlencodedParser,indexController.login);
 
 app.post('/registers',urlencodedParser,indexController.registers);
 
-app.get('/addCarList',indexController.addCarList);
+var productController = require('./Controllers/ProductController');
 
-app.get('/removeCarList',indexController.removeCarList);
+app.get('/products', productController.products);
 
+app.get('/single', productController.single);
+
+var carListController = require('./Controllers/CarListController');
+
+app.get('/checkout', carListController.checkout);
+
+app.get('/addCarList',carListController.addCarList);
+
+app.get('/removeCarList',carListController.removeCarList);
 
 var adminController = require('./Controllers/AdminController');
 app.get('/ad-index', adminController.ad_index);
