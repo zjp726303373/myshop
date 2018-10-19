@@ -55,7 +55,18 @@ app.get('/removeCarList',indexController.removeCarList);
 
 
 var adminController = require('./Controllers/AdminController');
+app.get('/ad-index', adminController.ad_index);
+app.get('/admin-404', adminController.admin_404);
+app.get('/admin-form', adminController.admin_form);
+app.get('/admin-gallery', adminController.admin_gallery);
+app.get('/admin-help', adminController.admin_help);
 app.get('/admin-log', adminController.admin_log);
+app.get('/admin-table', adminController.admin_table);
+app.get('/admin-user', adminController.admin_user);
+app.get('/admin-index', adminController.admin_index);
+
+
+
 
 app.listen(9999,function(){
     console.log('Server is running...');
