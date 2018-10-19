@@ -101,12 +101,6 @@ module.exports = function () {
         });
     };
 
-    //this.setSession = function (session, user_id, user_name) {
-    //    session.sign = true;
-    //    session.userId = user_id;
-    //    session.userName = user_name;
-    //};
-
     this.crypto = function (data) {
         var Tools = require('../Tools/Tool');
         var tool = new Tools();

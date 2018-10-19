@@ -25,5 +25,15 @@ module.exports = {
     },
     admin_index: function (req, res) {
         res.render('admin/admin-index', {});
+    },
+    admin_login: function (req, res) {
+        var email = req.body.email;
+        var password = req.body.password;
+        var AdminService = require('../Service/AdminService');
+        var adminService = new AdminService();
+        adminService.init();
+        adminService.checkAdmin(email,password, function (result) {
+            res.end(JSON.stringify(result));
+        })
     }
 };

@@ -78,7 +78,7 @@
                 <a href="ad-index">
                     <img src="images/admin.jpg" style="width:35px;height:35px;" alt="">
 
-                    <p>Call me</p>
+                    <p>Administrators</p>
                 </a>
             </div>
             <div class="clearfix"></div>
@@ -259,7 +259,7 @@
             </tr>
             <% })%>
         </table>
-        <a href="#" class=" to-buy">PROCEED TO BUY</a>
+        <a href="javaScript:void(0)" onclick="shopping()" class=" to-buy">PROCEED TO BUY</a>
         <div class="clearfix"></div>
         <script>
             function removeCarList(goodsId){
@@ -275,6 +275,10 @@
                         window.location.href = 'checkout';
                     }
                 });
+            }
+
+            function shopping(){
+                alert('抱歉！现在还没法进行购买！！！')
             }
         </script>
     </div>
